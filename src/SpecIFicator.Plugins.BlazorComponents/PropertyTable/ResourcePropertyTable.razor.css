@@ -1,0 +1,13 @@
+﻿table, th, td, tr {
+    /*border: 1px solid black;*/
+}
+
+.first {
+    border: none;
+    background-color: lightgray;
+}
+
+.header {
+    background-color: lightgray;
+}
+

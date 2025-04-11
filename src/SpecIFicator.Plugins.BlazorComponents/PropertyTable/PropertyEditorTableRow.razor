@@ -1,0 +1,90 @@
+﻿@using MDD4All.SpecIF.ViewModels.Models
+<tr>
+    <td class="first"></td>
+    <td width="50%"
+        class="name">
+        <span>@DataContext.Title</span>
+        @{
+            string unit = DataContext.Unit;
+            if (!string.IsNullOrEmpty(unit))
+            {
+                <span>&nbsp;[@unit]</span>
+            }
+        }
+    </td>
+
+    <td width ="50%"
+        class="value">
+        @if (!DataContext.IsEnumeration)
+        {
+            string type = DataContext.DataTypeType;
+            switch (type)
+            {
+                case "xs:string":
+                    @if (DataContext.Format == "plain")
+                    {
+                        <textarea class="form-control"
+                                  rows="2"
+                                  @bind="DataContext.PrimaryLanguageStringValue" />
+                    }
+                    else // xhtml
+                    {
+                        <textarea class="form-control"
+                                  rows="2"
+                                  @bind="DataContext.PrimaryLanguageStringValue" />
+                    }
+                    break;
+                case "xs:integer":
+                    <input type="text" class="form-control"
+                           @bind="DataContext.Value"
+                            />
+                    break;
+
+                case "xs:double":
+                    <input type="text" class="form-control"
+                           @bind="DataContext.Value" />
+                    break;
+
+                case "xs:boolean":
+                    <input type="checkbox"
+                           class="form-check-input"
+                           @bind="DataContext.Value" />
+                    break;
+            }
+
+        }
+        else
+        {
+            @if (DataContext.HasMultipleValues)
+            {
+                <select class="form-control"
+                        multiple
+                        @bind="SelectedEnumValues"
+                        >
+                    @foreach (EnumSelectItem item in DataContext.EnumerationOptions)
+                    {
+                        <option value="@item.Value">@item.Title</option>
+                    }
+                </select>
+            }
+            else
+            {
+                <select class="form-control"
+                        @bind="SelectedEnumValue">
+
+                    <option value=""></option>
+
+                    @foreach (EnumSelectItem item in DataContext.EnumerationOptions)
+                    {
+                        <option value="@item.Value">@item.Title</option>
+                    }
+                </select>
+            }
+        }
+
+
+    </td>
+
+</tr>
+
+

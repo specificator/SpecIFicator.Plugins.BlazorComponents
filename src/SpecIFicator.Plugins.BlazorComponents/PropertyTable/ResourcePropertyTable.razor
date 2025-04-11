@@ -1,0 +1,32 @@
+﻿@using MDD4All.SpecIF.ViewModels
+@if(DataContext != null)
+{
+    <table width="100%">
+        <tr>
+            <th width="30"
+                class="first"
+                @onclick="OnButtonClick">
+                @if (IsCollapsed)
+                {
+                    <i class="bi bi-caret-right-fill"></i>
+                }
+                else
+                {
+                    <i class="bi bi-caret-down-fill"></i>
+                }
+
+            </th>
+            <th colspan="2"
+                class="header">@DataContext.Type</th>
+
+        </tr>
+        @if (!IsCollapsed)
+        {
+            @foreach(PropertyViewModel propertyViewModel in DataContext.Properties)
+            {
+                <PropertyEditorTableRow DataContext="propertyViewModel"
+                                        PrimaryLanguage="en" />
+            }
+        }
+    </table>
+}
