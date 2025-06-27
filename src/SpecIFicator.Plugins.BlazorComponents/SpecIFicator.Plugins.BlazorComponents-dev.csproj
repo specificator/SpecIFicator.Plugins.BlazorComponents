@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\MDD4All.SpecIF.ViewModels\src\MDD4All.SpecIF.ViewModels\MDD4All.SpecIF.ViewModels-dev.csproj" />
+    <ProjectReference Include="..\..\..\MDD4All.UI.BlazorComponents\src\MDD4All.UI.BlazorComponents\MDD4All.UI.BlazorComponents-dev.csproj" />
   </ItemGroup>
 
 

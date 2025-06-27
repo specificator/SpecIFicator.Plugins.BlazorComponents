@@ -1,0 +1,12 @@
+﻿@using MDD4All.UI.BlazorComponents.Tree
+@using MDD4All.SpecIF.ViewModels;
+
+<div id="treepanel">
+    <MvvmTree TNode="NodeViewModel" 
+              DataContext="@DataContext"
+              SelectedNodeChanged="OnSelectionChanged">
+
+        <TitleTemplate>@context.Level <ResourceIcon Icon="@context.ReferencedResource.Icon"></ResourceIcon>&nbsp;@context.TreeNodeText</TitleTemplate>
+        <LoadingTemplate>@context.Level <span class="placeholder-glow"></span></LoadingTemplate>
+    </MvvmTree>
+</div>
