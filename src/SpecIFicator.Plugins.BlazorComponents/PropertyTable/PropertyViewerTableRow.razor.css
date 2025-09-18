@@ -1,0 +1,13 @@
+﻿.first {
+    border: none;
+    background-color: lightgray;
+}
+
+.name {
+    border: 1px solid black;
+    color: darkred;
+}
+
+.value {
+    border: 1px solid black;
+}

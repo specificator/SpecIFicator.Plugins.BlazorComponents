@@ -1,5 +1,5 @@
 ﻿@using MDD4All.SpecIF.ViewModels
-@if(DataContext != null)
+@if (DataContext != null)
 {
     <table width="100%">
         <tr>
@@ -17,15 +17,34 @@
 
             </th>
             <th colspan="2"
-                class="header">@DataContext.Type</th>
+                class="header">@DataContext.Type
+                
+                @if (DataContext.IsInEditMode)
+                {
+                    <button class="btn btn-prinary">Save</button>
+                    <button class="btn btn-secondary">Cancel</button>
+                }
+                else
+                {
+                    <button class="btn btn-prinary">Edit</button>
+                }
+            </th>
 
         </tr>
         @if (!IsCollapsed)
         {
-            @foreach(PropertyViewModel propertyViewModel in DataContext.Properties)
+            @foreach (PropertyViewModel propertyViewModel in DataContext.Properties)
             {
-                <PropertyEditorTableRow DataContext="propertyViewModel"
-                                        PrimaryLanguage="en" />
+                @if (DataContext.IsInEditMode)
+                {
+                    <PropertyEditorTableRow DataContext="propertyViewModel"
+                                            PrimaryLanguage="@PrimaryLanguage" />
+                }
+                else
+                {
+                    <PropertyViewerTableRow DataContext="propertyViewModel"
+                                            PrimaryLanguage="@PrimaryLanguage" />
+                }
             }
         }
     </table>

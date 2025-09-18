@@ -8,6 +8,12 @@ namespace SpecIFicator.Plugins.BlazorComponents.PropertyTable
         [Parameter]
         public ResourceViewModel DataContext { get; set; }
 
+        [Parameter]
+        public string PrimaryLanguage { get; set; } = "en";
+
+        [Parameter]
+        public string SecondaryLanguage { get; set; } = "de";
+
         public bool IsCollapsed { get; set; } = false;
 
         private void OnButtonClick()

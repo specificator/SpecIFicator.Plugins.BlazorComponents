@@ -1,0 +1,26 @@
+﻿@using MDD4All.SpecIF.ViewModels.Models
+<tr>
+    <td class="first"></td>
+    <td width="50%"
+        class="name">
+        <span>@DataContext.Title</span>
+        @{
+            string unit = DataContext.Unit;
+            if (!string.IsNullOrEmpty(unit))
+            {
+                <span>&nbsp;[@unit]</span>
+            }
+        }
+    </td>
+
+    <td width="50%"
+        class="value">
+        <PropertyContentViewer PropertyViewModel="DataContext" Language="@PrimaryLanguage" />
+
+
+    </td>
+
+</tr>
+
+
+
